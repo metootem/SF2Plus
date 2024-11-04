@@ -1,0 +1,8 @@
+VertexLitGeneric
+{
+	$basetexture "models/meto/sf2plus/healtharms/healthbooster"
+
+	$envmap "env_cubemap"
+	$envmapmask "models/meto/sf2plus/healtharms/healthbooster_metal"
+	$envmaptint "[0.20 0.20 0.20]"
+}

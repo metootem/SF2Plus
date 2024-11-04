@@ -1,0 +1,6 @@
+VertexLitGeneric
+{
+	$basetexture "models/meto/sf2plus/staminaarms/staminaboosterglass"
+
+	$translucent 1
+}
