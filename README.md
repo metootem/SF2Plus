@@ -3,11 +3,11 @@
 A plugin adding new gameplay features to Team Fortress 2 Custom Gamemomde Slender Fortress 2
 
 Add to databases.cfg:
-  "sf2plus"
+"sf2plus"
 {
-	"driver"			"sqlite"
-	"host"				"localhost"
-	"database"			"sf2plus"
-	"user"				"root"
-	"pass"				""
- }
+	"driver"	"sqlite"
+ 	"host"	"localhost"
+  	"database"	"sf2plus"
+   	"user"	"root"
+    	"pass"	""
+}
