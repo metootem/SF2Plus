@@ -10,4 +10,4 @@ Add to databases.cfg:
 	"database"			"sf2plus"
 	"user"				"root"
 	"pass"				""
-}
+ }
