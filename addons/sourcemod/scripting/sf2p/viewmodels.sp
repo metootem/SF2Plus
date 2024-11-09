@@ -67,6 +67,10 @@ public Action SF2P_ActivateUtilityViewmodel(int client, int util_slot)
 		// Set Viewmodel Model
 		SF2P_GetClientUtilityViewmodelValue(client, util_slot, "model", value, sizeof(value));
 		SetEntityModel(utility_viewmdl, value);
+		SF2P_GetClientUtilityViewmodelValue(client, util_slot, "skin", value, sizeof(value));
+		SetEntProp(utility_viewmdl, Prop_Send, "m_nSkin", StringToInt(value));
+		SF2P_GetClientUtilityViewmodelValue(client, util_slot, "skin", value, sizeof(value));
+		SetEntProp(utility_viewmdl, Prop_Send, "m_nBody", StringToInt(value));
 		
 		// Create Class Arms
 		int playerviewmdlarms = CreateEntityByName("prop_dynamic_override");

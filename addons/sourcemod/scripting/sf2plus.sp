@@ -153,6 +153,7 @@ enum struct ClientUtilViewmodelEnum
 	char hudname[PLATFORM_MAX_PATH];
 	char model[PLATFORM_MAX_PATH];
 	int skin;
+	int body;
 	float duration;
 	float delay;
 	bool hideMainViewmodel[10];
@@ -469,6 +470,7 @@ void ViewmodelsConfig(int load, int download)
 								
 								// Function values
 								UtilViewmodel[i][Vm_idx].skin = kv.GetNum("skin");
+								UtilViewmodel[i][Vm_idx].body = kv.GetNum("body");
 								UtilViewmodel[i][Vm_idx].duration = kv.GetFloat("duration");
 								UtilViewmodel[i][Vm_idx].delay = kv.GetFloat("delay");
 								
@@ -477,6 +479,7 @@ void ViewmodelsConfig(int load, int download)
 									LogMessage("[SF2+] hud_name: %s", UtilViewmodel[i][Vm_idx].hudname);
 									LogMessage("[SF2+] model: %s", (!StrEqual(UtilViewmodel[i][Vm_idx].model, "") ? UtilViewmodel[i][Vm_idx].model : "[SF2+] !!! Couldn't find 'model' key"));
 									LogMessage("[SF2+] skin: %i", UtilViewmodel[i][Vm_idx].skin);
+									LogMessage("[SF2+] body: %i", UtilViewmodel[i][Vm_idx].body);
 									LogMessage("[SF2+] duration: %0.1f", UtilViewmodel[i][Vm_idx].duration);
 									LogMessage("[SF2+] delay: %0.1f", UtilViewmodel[i][Vm_idx].delay);
 									LogMessage("[SF2+]");
@@ -516,7 +519,10 @@ void ViewmodelsConfig(int load, int download)
 									LogMessage("[SF2+]");
 								}
 								
-								if (kv.JumpToKey("sounds")) // ------ sounds
+								//Sounds
+								char sound[PLATFORM_MAX_PATH];
+								kv.GetString("sound", sound, sizeof(sound));
+								if (kv.JumpToKey("sounds"))
 								{
 									char section[16];
 									kv.GetSectionName(section, sizeof(section));
@@ -524,7 +530,7 @@ void ViewmodelsConfig(int load, int download)
 									
 									for (int k=1; k<10; k++)
 									{
-										kv.GetString(szTF2Classes[k], UtilViewmdlSound[i][Vm_idx][k], PLATFORM_MAX_PATH);
+										kv.GetString(szTF2Classes[k], UtilViewmdlSound[i][Vm_idx][k], PLATFORM_MAX_PATH, sound);
 										FormatEx(buffer, sizeof(buffer), "sound/%s", UtilViewmdlSound[i][Vm_idx][k]);
 										if (StrEqual(UtilViewmdlSound[i][Vm_idx][k], "")) { LogMessage("[SF2+] !!! Couldn't find key '%s' !", szTF2Classes[k]); }
 										else if (!FileExists(buffer)) { LogMessage("[SF2+] !!! Couldn't find %s file!", buffer); }
@@ -1199,6 +1205,7 @@ void SQL_FetchClientViewmodels(int client)
 					{
 						LogMessage("!!! Couldn't find Utility Viewmodel %s! Setting to %s", query, UtilViewmodel[ClientInfo[client].Utility[i]][0].name);
 						ClientInfo[client].Viewmodel[i] = 0;
+						SQL_SaveClientUtilityViewmodel(client, i);
 					}
 					
 				}
@@ -3031,6 +3038,11 @@ public any native_SF2P_GetClientUtilityViewmodelValue(Handle plugin, int numPara
 		IntToString(UtilViewmodel[util_idx][vm_idx].skin, buffer, 3);
 		SetNativeString(4, buffer, GetNativeCell(5)); 
 	}
+	if (StrEqual(value, "body"))
+	{
+		IntToString(UtilViewmodel[util_idx][vm_idx].body, buffer, 3);
+		SetNativeString(4, buffer, GetNativeCell(5)); 
+	}
 	if (StrEqual(value, "duration"))
 	{
 		FloatToString(UtilViewmodel[util_idx][vm_idx].duration, buffer, 16);
@@ -3109,6 +3121,11 @@ public any native_SF2P_GetUtilityViewmodelValue(Handle plugin, int numParams)
 	if (StrEqual(value, "skin"))
 	{
 		IntToString(UtilViewmodel[util_idx][vm_idx].skin, buffer, 3);
+		SetNativeString(4, buffer, GetNativeCell(5)); 
+	}
+	if (StrEqual(value, "body"))
+	{
+		IntToString(UtilViewmodel[util_idx][vm_idx].body, buffer, 3);
 		SetNativeString(4, buffer, GetNativeCell(5)); 
 	}
 	if (StrEqual(value, "duration"))

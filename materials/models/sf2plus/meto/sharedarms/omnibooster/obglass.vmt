@@ -1,0 +1,9 @@
+VertexLitGeneric
+{
+	$basetexture "models/sf2plus/meto/sharedarms/omnibooster/obglass"
+
+	$translucent 1
+
+	$envmap "env_cubemap"
+	$envmaptint "[0.70 0.70 0.70]"
+}

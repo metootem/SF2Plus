@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	$basetexture "models/sf2plus/meto/sharedarms/omnibooster/obcolor"
+
+	$color "[1 0.97 0.17]"
+	$color2 "[1 0.98 0.44]"
+}

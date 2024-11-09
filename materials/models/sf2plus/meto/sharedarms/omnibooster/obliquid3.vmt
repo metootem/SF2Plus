@@ -1,0 +1,7 @@
+UnlitGeneric
+{
+	$basetexture "models/sf2plus/meto/sharedarms/omnibooster/obliquid"
+
+	$color "[1 1 0]"
+	$color2 "[1 1 0]"
+}
