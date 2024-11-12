@@ -3,6 +3,7 @@
 A plugin adding new gameplay features to Team Fortress 2 Custom Gamemomde Slender Fortress 2
 
 Features:
+<br/>
 -Player utilities to use in RED
 -Modular system for easy creation and addition of custom utilities
 -3 Base Utilities
