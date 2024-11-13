@@ -12,6 +12,7 @@ Features:<br/>
 -EXP/Level System rewarding player for playing<br/>
 -Player Miscellaneous Info tracking various information such as distance travelled, pages collected, etc.<br/>
 -Player Abilities altering gameplay earned through the EXP system<br/>
+-API for making subplugins for this one.<br/>
 <br/>
 Add to databases.cfg:<br/>
 "sf2plus"<br/>
